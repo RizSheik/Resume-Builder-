@@ -1,0 +1,23 @@
+.sprite {
+    background-image: url('/draktheme.png');
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.sprite-theme {
+    width: 32px;
+    height: 32px;
+    background-position: 0 0;
+}
+
+.sprite-upload {
+    width: 32px;
+    height: 32px;
+    background-position: 0 -32px;
+}
+
+.sprite-print {
+    width: 32px;
+    height: 32px;
+    background-position: 0 -64px;
+}

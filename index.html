@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/sprite.css">
+</head>
+<body>
+    <div class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <i class="sprite sprite-theme" aria-hidden="true"></i>
+    </div>
+
+    <div class="container">
+        <h1>Resume Builder</h1>
+
+        <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-step active" data-step="Personal"></div>
+            <div class="progress-step" data-step="Education"></div>
+            <div class="progress-step" data-step="Experience"></div>
+            <div class="progress-step" data-step="Skills"></div>
+            <div class="progress-step" data-step="Preview"></div>
+        </div>
+
+        <form id="resumeForm">
+            <div id="personal" class="form-section active">
+                <h2>Personal Information</h2>
+                <div class="profile-picture-container">
+                    <img id="profilePicture" src="/profilePicture.JPEG" alt="Profile picture" class="profile-picture">
+                    <label for="imageUpload" class="image-upload-label">
+                        <i class="sprite sprite-upload" aria-hidden="true"></i>
+                        Choose Picture
+                    </label>
+                    <input type="file" id="imageUpload" accept="image/*" onchange="handleImageUpload(event)">
+                </div>
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" name="phone" required>
+                <button type="button" onclick="nextSection('education')">Next</button>
+            </div>
+
+            <div id="education" class="form-section">
+                <h2>Education</h2>
+                <label for="school">School/University:</label>
+                <input type="text" id="school" name="school" required>
+                <label for="degree">Degree:</label>
+                <input type="text" id="degree" name="degree" required>
+                <label for="gradYear">Graduation Year:</label>
+                <input type="number" id="gradYear" name="gradYear" required>
+                <div class="button-group">
+                    <button type="button" onclick="prevSection('personal')">Previous</button>
+                    <button type="button" onclick="nextSection('experience')">Next</button>
+                </div>
+            </div>
+
+            <div id="experience" class="form-section">
+                <h2>Work Experience</h2>
+                <label for="company">Company:</label>
+                <input type="text" id="company" name="company" required>
+                <label for="position">Position:</label>
+                <input type="text" id="position" name="position" required>
+                <label for="startDate">Start Date:</label>
+                <input type="date" id="startDate" name="startDate" required>
+                <label for="endDate">End Date:</label>
+                <input type="date" id="endDate" name="endDate">
+                <label for="responsibilities">Responsibilities:</label>
+                <textarea id="responsibilities" name="responsibilities" rows="4" required></textarea>
+                <div class="button-group">
+                    <button type="button" onclick="prevSection('education')">Previous</button>
+                    <button type="button" onclick="nextSection('skills')">Next</button>
+                </div>
+            </div>
+
+            <div id="skills" class="form-section">
+                <h2>Skills</h2>
+                <label for="skills">Skills (comma-separated):</label>
+                <input type="text" id="skills" name="skills" required>
+                <div class="button-group">
+                    <button type="button" onclick="prevSection('experience')">Previous</button>
+                    <button type="button" onclick="generateResume()">Generate Resume</button>
+                </div>
+            </div>
+
+            <div id="preview" class="form-section">
+                <h2>Resume Preview</h2>
+                <div id="resumePreview"></div>
+                <div class="button-group">
+                    <button type="button" onclick="prevSection('skills')">Edit</button>
+                    <button type="button" onclick="printResume()">
+                        <i class="sprite sprite-print" aria-hidden="true"></i>
+                        Print
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
